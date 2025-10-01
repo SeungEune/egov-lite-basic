@@ -12,7 +12,8 @@ import org.springframework.stereotype.Service;
 import egovframework.com.sym.mnu.bmm.service.BkmkMenuManage;
 import egovframework.com.sym.mnu.bmm.service.BkmkMenuManageVO;
 import egovframework.com.sym.mnu.bmm.service.EgovBkmkMenuManageservice;
-import egovframework.com.sym.mnu.mpm.service.MenuManageVO;
+// mpm 모듈 삭제로 인해 MenuManageVO import 제거
+//import egovframework.com.sym.mnu.mpm.service.MenuManageVO;
 
 /**
  * @Class Name : EgovBkmkMenuManageServiceImpl.java
@@ -113,14 +114,17 @@ public class EgovBkmkMenuManageServiceImpl extends EgovAbstractServiceImpl imple
 
     /**
      * 미리보기를 할 바로가기메뉴관리의 목록을 조회한다.
+     * (mpm 모듈 삭제로 인해 사용 중지)
      * 
      * @param BkmkMenuManageVO
      * @return List<MenuManageVO> 
      * @throws Exception
      */
+    /*
     public List<MenuManageVO> selectBkmkPreviewList(BkmkMenuManageVO bkmkMenuManageVO) throws Exception {
         return bkmkMenuManageDAO.selectBkmkPreview(bkmkMenuManageVO);
     }
+    */
 
     /**
      * 선택된 메뉴의 URL 을 조회한다.

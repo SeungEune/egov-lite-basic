@@ -4,7 +4,8 @@ package egovframework.com.sym.mnu.bmm.service;
 import java.util.List;
 import java.util.Map;
 
-import egovframework.com.sym.mnu.mpm.service.MenuManageVO;
+// mpm 모듈 삭제로 인해 MenuManageVO import 제거
+//import egovframework.com.sym.mnu.mpm.service.MenuManageVO;
 
 
 /**
@@ -67,12 +68,13 @@ public interface EgovBkmkMenuManageservice {
 
     /**
      * 미리보기를 할 바로가기메뉴관리의 목록을 조회한다.
-     *
+     * (mpm 모듈 삭제로 인해 사용 중지)
+     * 
      * @param BkmkMenuManageVO
      * @return List<MenuManageVO>
      * @throws Exception
      */
-    public List<MenuManageVO> selectBkmkPreviewList(BkmkMenuManageVO bkmkMenuManageVO) throws Exception;
+    // public List<MenuManageVO> selectBkmkPreviewList(BkmkMenuManageVO bkmkMenuManageVO) throws Exception;
 
     /**
      * 선택된 메뉴의 URL 을 조회한다.

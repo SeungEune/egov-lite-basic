@@ -15,6 +15,10 @@ var getContextPath = "${pageContext.request.contextPath}";
 <script language="javascript" src="<c:url value='/js/egovframework/com/main.js' />"></script>
 <script type="text/javascript">
 	function fn_main_headPageMove(menuNo, url){
+		// mpm 모듈 삭제로 인해 메뉴 이동 기능 비활성화
+		alert('메뉴 관리 모듈(mpm)이 삭제되어 사용할 수 없습니다.');
+		return false;
+		/*
 		document.selectOne.vStartP.value=menuNo;
 		document.selectOne.chkURL.value=url;
 	    document.selectOne.action = "<c:url value='/sym/mnu/mpm/EgovMainMenuLeft.do'/>";
@@ -23,6 +27,7 @@ var getContextPath = "${pageContext.request.contextPath}";
  	    document.selectOne.action = "<c:url value='/sym/mnu/mpm/EgovMainMenuRight.do'/>";
 	    document.selectOne.target = "main_right";
 	    document.selectOne.submit();
+	    */
 	}
 
 	function actionLogout()
@@ -43,7 +48,8 @@ var getContextPath = "${pageContext.request.contextPath}";
 </form>
 
     <div id="gnb">
-    <div id="top_logo"><a href="<c:url value='/sym/mnu/mpm/EgovMainMenuHome.do' />" target=_top><img src="<c:url value='/images/egovframework/com/cmm/main/logo_01.gif' />" alt="egovframe" /></a></div>
+    <!-- mpm 모듈 삭제로 인해 홈 링크 비활성화 -->
+    <div id="top_logo"><a href="#" target=_top><img src="<c:url value='/images/egovframework/com/cmm/main/logo_01.gif' />" alt="egovframe" /></a></div>
      <div id="use_descri">
             <ul>
                 <li>공통서비스 테스트 사이트</li>
@@ -53,7 +59,8 @@ var getContextPath = "${pageContext.request.contextPath}";
     </div>
     <div id="new_topnavi">
         <ul>
-			<li><a href="<c:url value='/sym/mnu/mpm/EgovMainMenuHome.do' />" target="_top">HOME</a></li>
+			<!-- mpm 모듈 삭제로 인해 홈 링크 비활성화 -->
+			<li><a href="#" target="_top">HOME</a></li>
 			<c:forEach var="result" items="${list_headmenu}" varStatus="status">
 			   <li class="gap"> l </li>
 			   <li><a href="javascript:fn_main_headPageMove('<c:out value="${result.menuNo}"/>','<c:out value="${result.chkURL}"/>')"><c:out value="${result.menuNm}"/></a></li>

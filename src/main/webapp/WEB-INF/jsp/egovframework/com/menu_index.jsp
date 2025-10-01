@@ -27,6 +27,14 @@
 <title>Menu Index frame</title>
 </head>
 
+<!-- mpm 모듈이 삭제되어 메뉴 시스템 비활성화됨 -->
+<body>
+	<div style="padding: 50px; text-align: center;">
+		<h2>메뉴 관리 모듈(mpm)이 삭제되었습니다.</h2>
+		<p>메뉴 시스템을 사용하려면 대체 모듈을 구현하거나 mpm 모듈을 복원해야 합니다.</p>
+	</div>
+</body>
+<!--
 <frameset rows="122,*,50" frameborder="0" >
 	<frame src="<c:url value='/sym/mnu/mpm/EgovMainMenuHead.do' />" name="main_top" marginwidth="0" marginheight="0">
 	<frameset cols="273,*" frameborder="0">
@@ -35,4 +43,5 @@
 	</frameset>
 	<frame src="<c:url value='/EgovPageLink.do' />?linkIndex=2" scrolling="no" name="main_bottom" marginwidth="0" marginheight="0">
 </frameset>
+-->
 </html>

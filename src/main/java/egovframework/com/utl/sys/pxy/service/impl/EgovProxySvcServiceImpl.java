@@ -27,8 +27,10 @@ import egovframework.com.utl.sys.pxy.service.ProxySvcVO;
  * @author lee.m.j
  * @version 1.0
  * @created 28-6-2010 오전 10:44:27
+ * 
+ * 경량화 작업으로 인해 비활성화 (egovProxyLogIdGnrService 빈 정의 누락)
  */
-@Service("egovProxySvcService")
+//@Service("egovProxySvcService")
 public class EgovProxySvcServiceImpl extends EgovAbstractServiceImpl implements EgovProxySvcService {
 
 	// 파일구분자

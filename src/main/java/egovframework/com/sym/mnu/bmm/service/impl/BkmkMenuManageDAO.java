@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 import egovframework.com.cmm.service.impl.EgovComAbstractDAO;
 import egovframework.com.sym.mnu.bmm.service.BkmkMenuManage;
 import egovframework.com.sym.mnu.bmm.service.BkmkMenuManageVO;
-import egovframework.com.sym.mnu.mpm.service.MenuManageVO;
+// mpm 모듈 삭제로 인해 MenuManageVO import 제거
+//import egovframework.com.sym.mnu.mpm.service.MenuManageVO;
 
 
 /**
@@ -112,14 +113,17 @@ public class BkmkMenuManageDAO extends EgovComAbstractDAO{
 
     /**
      * 미리보기를 할 바로가기메뉴관리의 목록을 조회한다.
-     *
+     * (mpm 모듈 삭제로 인해 사용 중지)
+     * 
      * @param BkmkMenuManageVO
      * @return
      * @throws Exception
      */
+    /*
     public List<MenuManageVO> selectBkmkPreview(BkmkMenuManageVO bkmkMenuManageVO) throws Exception {
         return selectList("BkmkMenuManageDAO.selectBkmkPreview", bkmkMenuManageVO);
     }
+    */
 
     /**
      * 선택된 메뉴의 URL 을 조회한다.

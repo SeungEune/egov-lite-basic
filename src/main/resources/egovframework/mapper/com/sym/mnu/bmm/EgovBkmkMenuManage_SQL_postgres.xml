@@ -16,6 +16,8 @@
 		<result property="menuDc" column="MENU_DC"/>
 	</resultMap>
 	
+	<!-- mpm 모듈 삭제로 인해 MenuManageVO 참조 비활성화 -->
+	<!--
 	<resultMap id="menuManage" type="egovframework.com.sym.mnu.mpm.service.MenuManageVO">
 		<result property="menuNo" column="MENU_NO"/>
 		<result property="menuOrdr" column="MENU_ORDR"/>
@@ -39,6 +41,7 @@
 			 	MENU_NO = b.MENU_ID
 		 
 	</select>
+	-->
 	
 	<select id="selectBkmkMenuManage" parameterType="egovframework.com.sym.mnu.bmm.service.BkmkMenuManageVO" resultType="egovframework.com.sym.mnu.bmm.service.BkmkMenuManageVO">
 		 

@@ -50,10 +50,11 @@ import egovframework.com.utl.sys.pxy.service.ProxySvcVO;
  *  2011.08.26   정진오            IncludedInfo annotation 추가
  *  2019.12.05   신용호            KISA 보안약점 조치 (경로조작및 자원 삽입)
  *  
+ *  경량화 작업으로 인해 비활성화 (egovProxySvcIdGnrService 빈 정의 누락)
  * </pre>
  */
 
-@Controller
+//@Controller
 public class EgovProxySvcController {
 
 	@Resource(name = "egovProxySvcService")

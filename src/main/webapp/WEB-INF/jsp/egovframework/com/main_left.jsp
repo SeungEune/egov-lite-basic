@@ -21,8 +21,9 @@
   */
 
   /* Image Path 설정 */
-  String imagePath_icon   = "/images/egovframework/com/sym/mnu/mpm/icon/";
-  String imagePath_button = "/images/egovframework/com/sym/mnu/mpm/button/";
+  // mpm 모듈 삭제로 인해 경로 변경 필요
+  String imagePath_icon   = "/images/egovframework/com/cmm/icon/";
+  String imagePath_button = "/images/egovframework/com/cmm/button/";
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -34,10 +35,13 @@ var imgpath = "<c:url value='/images/egovframework/com/cmm/utl/'/>";
 var getContextPath = "${pageContext.request.contextPath}";
 var path = "http://" + "${pageContext.request.serverName}" + ":" + "${pageContext.request.serverPort}";
 </script>
-<script language="javascript1.2" src="<c:url value='/js/egovframework/com/sym/mnu/mpm/EgovMainMenu.js' />" /></script>
+<!-- mpm 모듈 삭제로 인해 스크립트 비활성화 -->
+<!-- <script language="javascript1.2" src="<c:url value='/js/egovframework/com/sym/mnu/mpm/EgovMainMenu.js' />" /></script> -->
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight= "0">
-<form name="menuListForm" action ="<c:url value='/sym/mnu/mpm/EgovMenuListSelect.do' />" method="post">
+<!-- mpm 모듈 삭제로 인해 폼 액션 비활성화 -->
+<form name="menuListForm" action ="#" method="post">
+<!-- <form name="menuListForm" action ="<c:url value='/sym/mnu/mpm/EgovMenuListSelect.do' />" method="post"> -->
 <DIV id="main" style="display:">
 
 <table width="250" cellpadding="8" class="table-search" border="0">

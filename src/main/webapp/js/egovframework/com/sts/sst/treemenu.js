@@ -211,7 +211,12 @@ function temp_aa(treeNodes) {
 }
 
 function updateMenuList() {
+	// mpm 모듈 삭제로 인해 기능 비활성화
+	alert("메뉴 관리 모듈(mpm)이 삭제되어 사용할 수 없습니다.");
+	return false;
+	/*
 	alert("수정");
 	document.menuListForm.action = "<c:url value='/sym/mnu/mpm/EgovMenuListUpdt.do'/>";
 	parent.document.menuListForm.submit();
+	*/
 }
