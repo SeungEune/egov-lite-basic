@@ -72,15 +72,6 @@ function fnUpdate(form){
 	}
 }
 
-// 2021.05.30, 정진오, 디지털원패스 연동해지
-function onepassCancel() {
-	if (confirm("디지털원패스 연동해지를 진행하시겠습니까?")) { 
-		document.onepassForm.action = "<c:url value='/uat/uia/onepass/onepassCancel.do'/>";
-		document.onepassForm.submit();
-		return true;
-	} else {
-		return false;
-	}
 }
 </script>
 </head>
@@ -125,20 +116,8 @@ function onepassCancel() {
 		<tr>
 			<th>${title} <span class="pilsu">*</span></th>
 			<td class="left">
-				<!-- 2021.05.30, 정진오, 디지털원패스 연동해지 -->
-				<c:choose>
-					<c:when test="${not empty onepassUserkey && not empty onepassIntfToken}">
-						<form:input path="entrprsmberId" id="entrprsmberId" title="${title} ${inputTxt}" size="20" readonly="true" maxlength="20" style="width:70%"/>
-						<form:errors path="entrprsmberId" cssClass="error" />
-						<form:hidden path="uniqId" />
-						<a class="btn02" href="#" onclick="onepassCancel();return false;">디지털원패스 연동해지</a>
-					</c:when>
-					<c:otherwise>
-						<form:input path="entrprsmberId" id="entrprsmberId" title="${title} ${inputTxt}" size="20" readonly="true" maxlength="20" />
-						<form:errors path="entrprsmberId" cssClass="error" />
-						<form:hidden path="uniqId" />
-					</c:otherwise>
-				</c:choose>
+				<form:input path="entrprsmberId" id="entrprsmberId" title="${title} ${inputTxt}" size="20" readonly="true" maxlength="20" />
+				<form:errors path="entrprsmberId" cssClass="error" />
 			</td>
 		</tr>
 		<!-- 회사명 -->
@@ -345,12 +324,6 @@ function onepassCancel() {
 </div>
 </form:form>
 <!-- content end -->
-
-<!-- 2021.05.30, 정진오, 디지털원패스 연동해지 -->
-<form id="onepassForm" name="onepassForm" method="post">
-<input type="hidden" name="userKey" id="userKey" value="<c:out value='${onepassUserkey}'/>"/>
-<input type="hidden" name="intfToken" id="intfToken" value="<c:out value='${onepassIntfToken}'/>"/>
-</form>
 
 </body>
 </html>

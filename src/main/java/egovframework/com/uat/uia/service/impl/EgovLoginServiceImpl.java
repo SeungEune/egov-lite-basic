@@ -248,16 +248,5 @@ public class EgovLoginServiceImpl extends EgovAbstractServiceImpl implements Ego
 		return loginDAO.selectPassedDayChangePWD(vo);
 	}
 
-    /**
-	 * 디지털원패스 인증 회원 조회한다.
-	 * @param id
-	 * @return LoginVO
-	 * @exception Exception
-	 */
-    @Override
-	public LoginVO onepassLogin(String id) throws Exception {
-    	LoginVO loginVO = loginDAO.onepassLogin(id);
-    	return loginVO;
-    }
 
 }

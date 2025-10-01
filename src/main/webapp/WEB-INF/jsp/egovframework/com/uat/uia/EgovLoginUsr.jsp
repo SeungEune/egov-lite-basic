@@ -214,16 +214,6 @@ function fnShowLogin(stat) {
 	}
 }
 
-// 2021.05.30, 정진오, 디지털원패스 로그인 추가
-function fnOnepassLogin() {
-	if ('${authType}' == 'session') {
-		document.onepassForm.serviceType.value = 'LOGIN';
-		document.onepassForm.target = '_top';
-		document.onepassForm.action = '<c:url value="/uat/uia/onepass/onepassLogin.do"/>';
-		document.onepassForm.submit();
-	} else {
-		alert('디지털원패스는 Session 권한인증일때만 사용하실 수 있습니다.');
-	}
 }
 </script>
 </head>
@@ -312,18 +302,6 @@ function fnOnepassLogin() {
 	<input name="j_username" type="hidden"/>
 	</form>
 
-	<!-- 2021.05.30, 정진오, 디지털원패스 로그인 추가 -->
-	<div style="border:2px solid #e6e6e6; margin-top:20px;">
-		<form id="onepassForm" name="onepassForm" method="post">
-		<input type="hidden" id="serviceType" name="serviceType"/>
-		</form>
-		<ul style="margin:10px 0px 10px;">
-			<li style="text-align:center;">
-				하나의 아이디로 간편하게
-				<a href="#" onclick="javascript:fnOnepassLogin();"><img src="<c:url value='/images/egovframework/com/uat/uia/onepass.png'/>" alt="디지털원패스 로그인" title="디지털원패스 로그인"></a>
-			</li>
-		</ul>
-	</div>
 
 </div>
 

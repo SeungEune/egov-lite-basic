@@ -123,14 +123,5 @@ public class LoginDAO extends EgovComAbstractDAO {
     	return selectOne("LoginUsr.selectPassedDayChangePWD", vo);
     }
 
-	/**
-	 * 디지털원패스 인증 회원 조회한다.
-	 * @param id
-	 * @return LoginVO
-	 * @exception Exception
-	 */
-    public LoginVO onepassLogin(String id) throws Exception {
-    	return (LoginVO)selectOne("LoginUsr.onepassLogin", id);
-    }
 
 }

@@ -57,10 +57,6 @@ public class LoginVO implements Serializable{
 	private String ip;
 	/** GPKI인증 DN */
 	private String dn;
-	/** 디지털원패스 사용자키 */
-	private String onepassUserkey;
-	/** 디지털원패스 사용자세션값 */
-	private String onepassIntfToken;
 
 	/**
 	 * id attribute 를 리턴한다.
@@ -257,33 +253,5 @@ public class LoginVO implements Serializable{
 		this.orgnztNm = orgnztNm;
 	}
 	
-	/**
-	 * 디지털원패스 사용자키를 리턴한다.
-	 * @return onepassUserkey
-	 */
-	public String getOnepassUserkey() {
-		return onepassUserkey;
-	}
-	/**
-	 * 디지털원패스 사용자키를 설정한다.
-	 * @param onepassUserkey
-	 */
-	public void setOnepassUserkey(String onepassUserkey) {
-		this.onepassUserkey = onepassUserkey;
-	}
-	/**
-	 * 디지털원패스 사용자세션값을 리턴한다.
-	 * @return
-	 */
-	public String getOnepassIntfToken() {
-		return onepassIntfToken;
-	}
-	/**
-	 * 디지털원패스 사용자세션값을 설정한다.
-	 * @param onepassIntfToken
-	 */
-	public void setOnepassIntfToken(String onepassIntfToken) {
-		this.onepassIntfToken = onepassIntfToken;
-	}
 
 }

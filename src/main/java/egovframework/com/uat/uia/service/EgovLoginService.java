@@ -97,11 +97,4 @@ public interface EgovLoginService {
 	 */    
     int selectPassedDayChangePWD(LoginVO vo) throws Exception;
 
-	/**
-	 * 디지털원패스 인증 회원 조회한다.
-	 * @param id
-	 * @return LoginVO
-	 * @exception Exception
-	 */
-    LoginVO onepassLogin(String id) throws Exception;
 }
