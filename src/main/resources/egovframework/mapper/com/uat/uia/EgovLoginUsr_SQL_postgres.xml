@@ -34,57 +34,6 @@
 		<result property="password" column="password"/>
 	</resultMap>
 	
-	<!-- SSO용 ESNTL_ID를 이용한 로그인(2011.8.26) -->
-	<select id="ssoLoginByEsntlId" resultMap="login">
-		<!-- 일반회원 -->
-		<if test="userSe != null and userSe == 'GNR'">
-			
-			SELECT mber_id AS id
-			     , mber_nm AS name
-			     , ihidNum AS ihidNum
-			     , password AS password
-			     , mber_email_adres AS email
-			     , 'GNR' AS userSe
-			     , '-' AS orgnztId
-			     , ESNTL_ID AS uniqId
-			  FROM COMTNGNRLMBER
-			 WHERE ESNTL_ID = #{uniqId}
-			   AND mber_sttus = 'P'
-			
-		</if>
-		<!-- 기업회원 -->
-		<if test="userSe != null and userSe == 'ENT'">
-			
-			SELECT ENTRPRS_MBER_ID AS id
-			     , cmpny_nm AS name
-			     , entrprs_mber_password AS password
-			     , bizrno AS ihidNum
-			     , applcnt_email_adres AS email
-			     , 'ENT' AS userSe
-			     , '-' AS orgnztId
-			     , esntl_id AS uniqId
-			  FROM COMTNENTRPRSMBER
-			 WHERE ESNTL_ID = #{uniqId}
-			   AND entrprs_mber_sttus = 'P'
-			
-		</if>
-		<!-- 업무사용자 -->
-		<if test="userSe != null and userSe == 'USR'">
-			
-			SELECT emplyr_id AS id
-			     , user_nm AS name
-			     , password AS password
-			     , ihidnum AS ihidNum
-			     , email_adres AS email
-			     , 'USR' AS userSe
-			     , orgnzt_id AS orgnztId
-			     , esntl_id AS uniqId
-			  FROM COMTNEMPLYRINFO
-			 WHERE ESNTL_ID = #{uniqId}
-			   AND emplyr_sttus_code = 'P'
-			
-		</if>
-	</select>
 	
 	
 	<!-- 일반 로그인 -->
