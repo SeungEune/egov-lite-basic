@@ -31,8 +31,6 @@ public class Globals {
     public static final String SERVER_CONF_PATH = EgovProperties.getPathProperty("Globals.ServerConfPath");
     //Client정보 프로퍼티 위치
     public static final String CLIENT_CONF_PATH = EgovProperties.getPathProperty("Globals.ClientConfPath");
-    //파일포맷 정보 프로퍼티 위치
-    public static final String FILE_FORMAT_PATH = EgovProperties.getPathProperty("Globals.FileFormatPath");
 
     //파일 업로드 원 파일명
 	public static final String ORIGIN_FILE_NM = "originalFileName";
