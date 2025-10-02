@@ -19,7 +19,6 @@
 	<!-- 820. RSS태그관리 -->
 	<util:list id="egovRSSWhitelist" value-type="java.lang.String">
 		<value>comthtrsmrcvmntrngloginfo</value>
-		<value>comtczip</value>
 	</util:list>
 	
 	<!-- 실명인증 nextUrl -->

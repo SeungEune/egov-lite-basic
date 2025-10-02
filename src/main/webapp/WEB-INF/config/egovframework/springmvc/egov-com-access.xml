@@ -42,7 +42,6 @@
 	<!--
 		* 예외 목록 URL
 		회원관리 : /uat/uia/**
-		우편번호 : /sym/ccm/zip/**
 		로그인이미지관리 : /uss/ion/lsi/**
 		약관확인 : /uss/umt/**
 		포털예제배너 : /uss/ion/bnr/getBannerImage.do
