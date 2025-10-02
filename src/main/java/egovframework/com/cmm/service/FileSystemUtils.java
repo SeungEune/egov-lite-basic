@@ -459,7 +459,7 @@ public class FileSystemUtils {
 	 * 2022.11.11 김혜준 시큐어코딩 처리 
 	 */
 	public Process processOperate(String clsssName, String cmdAttribs) throws IOException {
-		String[] sourceClassName = {"BatchShellScriptJob", "EgovAdministCodeRecptnService", "EgovInsttCodeRecptnService", "EgovNetworkState", "ProcessMonChecker"};
+		String[] sourceClassName = {"BatchShellScriptJob", "EgovInsttCodeRecptnService", "EgovNetworkState", "ProcessMonChecker"};
 		String[] command = new String[]{cmdAttribs};
 		Process process = null;
 		if (Arrays.asList(sourceClassName).contains(clsssName)) {
