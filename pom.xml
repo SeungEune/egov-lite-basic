@@ -532,7 +532,8 @@
             <version>2.7.0</version>
         </dependency>
     	   
-        <!-- GPKI인증서 로그인처리 라이브러리 -->
+        <!-- GPKI인증서 로그인처리 라이브러리 - 삭제됨 -->
+        <!--
         <dependency>
             <groupId>project</groupId>
             <artifactId>gpkisecureweb</artifactId>
@@ -543,6 +544,7 @@
             <artifactId>libgpkiapi</artifactId>
             <version>1.4.0</version>
         </dependency>
+        -->
 
 		
 		<dependency>

@@ -31,11 +31,6 @@ import egovframework.com.uat.uia.service.EgovLoginService;
 import egovframework.com.utl.fcc.service.EgovStringUtil;
 import egovframework.com.utl.sim.service.EgovClntInfo;
 
-/*
-import com.gpki.gpkiapi.cert.X509Certificate;
-import com.gpki.servlet.GPKIHttpServletRequest;
-import com.gpki.servlet.GPKIHttpServletResponse;
-*/
 
 /**
  * 일반 로그인, 인증서 로그인을 처리하는 컨트롤러 클래스
@@ -62,7 +57,7 @@ import com.gpki.servlet.GPKIHttpServletResponse;
  *  2021.01.15	신용호		로그아웃시 권한 초기화 추가 : session 모드 actionLogout()
  *  2021.05.30	정진오		디지털원패스 처리하기 위해 로그인 화면에 인증방식 전달
  *  2022.11.11	김혜준		시큐어코딩 처리
- *  2023.06.09	김신해		NSR 보안조치 (GPKI 인증서 등록 OOB 방지)
+ *  2023.06.09	김신해		NSR 보안조치 (인증서 등록 OOB 방지)
  *  2024.10.29	LeeBaekHaeng	불필요 형변환 제거 (request.getParameter("loginMessage"); loginService.selectLoginIncorrect(loginVO);)
 
  *  
@@ -108,22 +103,6 @@ public class EgovLoginController {
 			return "egovframework/com/cmm/error/accessDenied";
 		}
 
-		/*
-		GPKIHttpServletResponse gpkiresponse = null;
-		GPKIHttpServletRequest gpkirequest = null;
-
-		try{
-
-			gpkiresponse=new GPKIHttpServletResponse(response);
-		    gpkirequest= new GPKIHttpServletRequest(request);
-		    gpkiresponse.setRequest(gpkirequest);
-		    model.addAttribute("challenge", gpkiresponse.getChallenge());
-		    return "egovframework/com/uat/uia/EgovLoginUsr";
-
-		}catch(Exception e){
-		    return "egovframework/com/cmm/egovError";
-		}
-		*/
 
 		// 2021.05.30, 정진오, 디지털원패스 처리하기 위해 로그인 화면에 인증방식 전달
 		String authType = EgovProperties.getProperty("Globals.Auth").trim();
@@ -187,85 +166,6 @@ public class EgovLoginController {
 		}
 	}
 
-	/**
-	 * 인증서 로그인을 처리한다
-	 * @param vo - 주민번호가 담긴 LoginVO
-	 * @return result - 로그인결과(세션정보)
-	 * @exception Exception
-	 */
-	@RequestMapping(value = "/uat/uia/actionCrtfctLogin.do")
-	public String actionCrtfctLogin(@ModelAttribute("loginVO") LoginVO loginVO, HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
-
-		// 접속IP
-		String userIp = EgovClntInfo.getClntIP(request);
-		loginVO.setIp(userIp);
-		LOGGER.debug("User IP : {}", userIp);
-
-		/*
-		// 1. GPKI 인증
-		GPKIHttpServletResponse gpkiresponse = null;
-		GPKIHttpServletRequest gpkirequest = null;
-		String dn = "";
-		try{
-			gpkiresponse = new GPKIHttpServletResponse(response);
-		    gpkirequest = new GPKIHttpServletRequest(request);
-		    gpkiresponse.setRequest(gpkirequest);
-		    X509Certificate cert = null;
-
-		    byte[] signData = null;
-		    byte[] privatekey_random = null;
-		    String signType = "";
-		    String queryString = "";
-
-		    cert = gpkirequest.getSignerCert();
-		    dn = cert.getSubjectDN();
-
-		    java.math.BigInteger b = cert.getSerialNumber();
-		    b.toString();
-		    int message_type =  gpkirequest.getRequestMessageType();
-		    if( message_type == gpkirequest.ENCRYPTED_SIGNDATA || message_type == gpkirequest.LOGIN_ENVELOP_SIGN_DATA ||
-		        message_type == gpkirequest.ENVELOP_SIGNDATA || message_type == gpkirequest.SIGNED_DATA){
-		        signData = gpkirequest.getSignedData();
-		        if(privatekey_random != null) {
-		            privatekey_random   = gpkirequest.getSignerRValue();
-		        }
-		        signType = gpkirequest.getSignType();
-		    }
-		    queryString = gpkirequest.getQueryString();
-		}catch(Exception e){
-			return "cmm/egovError";
-		}
-
-		// 2. 업무사용자 테이블에서 dn값으로 사용자의 ID, PW를 조회하여 이를 일반로그인 형태로 인증하도록 함
-		if (dn != null && !dn.equals("")) {
-
-			loginVO.setDn(dn);
-			LoginVO resultVO = loginService.actionCrtfctLogin(loginVO);
-		    if (resultVO != null && resultVO.getId() != null && !resultVO.getId().equals("")) {
-
-		    	//스프링 시큐리티패키지를 사용하는지 체크하는 로직
-		    	if(EgovComponentChecker.hasComponent("egovAuthorManageService")){
-		    		// 3-1. spring security 연동
-		            return "redirect:/j_spring_security_check?j_username=" + resultVO.getUserSe() + resultVO.getId() + "&j_password=" + resultVO.getUniqId();
-
-		    	}else{
-		    		// 3-2. 로그인 정보를 세션에 저장
-		        	request.getSession().setAttribute("loginVO", resultVO);
-		    		return "redirect:/uat/uia/actionMain.do";
-		    	}
-
-
-		    } else {
-		    	model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-		    	return "redirect:/uat/uia/egovLoginUsr.do";
-		    }
-		} else {
-			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "redirect:/uat/uia/egovLoginUsr.do";
-		}
-		*/
-		return "redirect:/uat/uia/egovLoginUsr.do";
-	}
 
 	/**
 	 * 로그인 후 메인화면으로 들어간다
@@ -373,15 +273,6 @@ public class EgovLoginController {
 		return "egovframework/com/uat/uia/EgovIdPasswordSearch";
 	}
 
-	/**
-	 * 인증서안내 화면으로 들어간다
-	 * @return 인증서안내 페이지
-	 * @exception Exception
-	 */
-	@RequestMapping(value = "/uat/uia/egovGpkiIssu.do")
-	public String gpkiIssuView(ModelMap model) throws Exception {
-		return "egovframework/com/uat/uia/EgovGpkiIssu";
-	}
 
 	/**
 	 * 아이디를 찾는다.
@@ -440,133 +331,7 @@ public class EgovLoginController {
 		}
 	}
 
-	/**
-	 * 개발 시스템 구축 시 발급된 GPKI 서버용인증서에 대한 암호화데이터를 구한다.
-	 * 최초 한번만 실행하여, 암호화데이터를 EgovGpkiVariables.js의 ServerCert에 넣는다.
-	 * @return String
-	 * @exception Exception
-	 */
-	@RequestMapping(value = "/uat/uia/getEncodingData.do")
-	public void getEncodingData() throws Exception {
 
-		/*
-		X509Certificate x509Cert = null;
-		byte[] cert = null;
-		String base64cert = null;
-		try {
-			x509Cert = Disk.readCert("/product/jeus/egovProps/gpkisecureweb/certs/SVR1311000011_env.cer");
-			cert = x509Cert.getCert();
-			Base64 base64 = new Base64();
-			base64cert = base64.encode(cert);
-			log.info("+++ Base64로 변환된 인증서는 : " + base64cert);
-
-		} catch (GpkiApiException e) {
-			e.printStackTrace();
-		}
-		*/
-	}
-
-	/**
-	 * 인증서 DN추출 팝업을 호출한다.
-	 * @return 인증서 등록 페이지
-	 * @exception Exception
-	 */
-	@RequestMapping(value = "/uat/uia/EgovGpkiRegist.do")
-	public String gpkiRegistView(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
-
-		/** GPKI 인증 부분 */
-		// OS에 따라 (local NT(로컬) / server Unix(서버)) 구분
-		String os = System.getProperty("os.arch");
-		LOGGER.debug("OS : {}", os);
-		
-		//String virusReturn = null;
-
-		/*
-		// 브라우저 이름을 받기위한 처리
-		String webKind = EgovClntInfo.getClntWebKind(request);
-		String[] ss = webKind.split(" ");
-		String browser = ss[1];
-		model.addAttribute("browser",browser);
-		// -- 여기까지
-		if (os.equalsIgnoreCase("x86")) {
-		    //Local Host TEST 진행중
-		} else {
-		    if (browser.equalsIgnoreCase("Explorer")) {
-		GPKIHttpServletResponse gpkiresponse = null;
-		GPKIHttpServletRequest gpkirequest = null;
-
-		try {
-		    gpkiresponse = new GPKIHttpServletResponse(response);
-		    gpkirequest = new GPKIHttpServletRequest(request);
-
-		    gpkiresponse.setRequest(gpkirequest);
-		    model.addAttribute("challenge", gpkiresponse.getChallenge());
-
-		    return "egovframework/com/uat/uia/EgovGpkiRegist";
-
-		} catch (Exception e) {
-		    return "egovframework/com/cmm/egovError";
-		}
-		}
-		}
-		*/
-		return "egovframework/com/uat/uia/EgovGpkiRegist";
-	}
-
-	/**
-	 * 인증서 DN값을 추출한다
-	 * @return result - dn값
-	 * @exception Exception
-	 */
-	@RequestMapping(value = "/uat/uia/actionGpkiRegist.do")
-	public String actionGpkiRegist(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
-
-		/** GPKI 인증 부분 */
-		// OS에 따라 (local NT(로컬) / server Unix(서버)) 구분
-		String os = System.getProperty("os.arch");
-		LOGGER.debug("OS : {}", os);
-		
-		// String virusReturn = null;
-		@SuppressWarnings("unused")
-		String dn = "";
-
-		// 브라우저 이름을 받기위한 처리
-		String browser = EgovClntInfo.getClntWebKind(request);
-		model.addAttribute("browser", browser);
-		/*
-		// -- 여기까지
-		if (os.equalsIgnoreCase("x86")) {
-			// Local Host TEST 진행중
-		} else {
-			if (browser.equalsIgnoreCase("Explorer")) {
-				GPKIHttpServletResponse gpkiresponse = null;
-				GPKIHttpServletRequest gpkirequest = null;
-				try {
-					gpkiresponse = new GPKIHttpServletResponse(response);
-					gpkirequest = new GPKIHttpServletRequest(request);
-					gpkiresponse.setRequest(gpkirequest);
-					X509Certificate cert = null;
-
-					// byte[] signData = null;
-					// byte[] privatekey_random = null;
-					// String signType = "";
-					// String queryString = "";
-
-					cert = gpkirequest.getSignerCert();
-					dn = cert.getSubjectDN();
-
-					model.addAttribute("dn", dn);
-					model.addAttribute("challenge", gpkiresponse.getChallenge());
-
-					return "egovframework/com/uat/uia/EgovGpkiRegist";
-				} catch (Exception e) {
-					return "egovframework/com/cmm/egovError";
-				}
-			}
-		}
-		*/
-		return "egovframework/com/uat/uia/EgovGpkiRegist";
-	}
 	
 	/**
 	 * 세션타임아웃 시간을 연장한다.

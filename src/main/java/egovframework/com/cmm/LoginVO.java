@@ -55,8 +55,6 @@ public class LoginVO implements Serializable{
 	private String url;
 	/** 사용자 IP정보 */
 	private String ip;
-	/** GPKI인증 DN */
-	private String dn;
 
 	/**
 	 * id attribute 를 리턴한다.
@@ -225,20 +223,6 @@ public class LoginVO implements Serializable{
 	 */
 	public void setIp(String ip) {
 		this.ip = ip;
-	}
-	/**
-	 * dn attribute 를 리턴한다.
-	 * @return String
-	 */
-	public String getDn() {
-		return dn;
-	}
-	/**
-	 * dn attribute 값을 설정한다.
-	 * @param dn String
-	 */
-	public void setDn(String dn) {
-		this.dn = dn;
 	}
 	/**
 	 * @return the orgnztNm
