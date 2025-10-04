@@ -51,27 +51,6 @@
 	</repositories>
 
     <dependencies>
-        <!-- 실행환경 라이브러리 -->
-        <!--
-        mybatis를 사용하는 데 jdk1.5로 컴파일 할 경우 아래와 같이 변경해 주시기 바랍니다.
-        (3.2.X 버전에서 부터 jdk1.6으로 컴파일 되어 발생하는 현상)
-          <dependency>
-           <groupId>org.egovframe.rte</groupId>
-           <artifactId>org.egovframe.rte.psl.dataaccess</artifactId>
-           <version>${org.egovframe.rte.version}</version>
-           <exclusions>
-            <exclusion>
-             <artifactId>mybatis</artifactId>
-             <groupId>org.mybatis</groupId>
-            </exclusion>
-           </exclusions>
-          </dependency>
-          <dependency>
-           <groupId>org.mybatis</groupId>
-           <artifactId>mybatis</artifactId>
-			<version>3.5.16</version>
-          </dependency>
-        -->
         <dependency>
             <groupId>org.egovframe.rte</groupId>
             <artifactId>org.egovframe.rte.fdl.idgnr</artifactId>
@@ -190,24 +169,6 @@
 			<artifactId>xercesImpl</artifactId>
 			<version>2.12.2</version>
 		</dependency>
-        <!-- cache -->
-        <!-- <dependency>
-            <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache-core</artifactId>
-            <version>2.10.9.2</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>slf4j-api</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-		    <groupId>net.sf.ehcache</groupId>
-		    <artifactId>ehcache</artifactId>
-		    <version>2.10.9.2</version>
-		</dependency> -->
-        <!-- cache end -->
 
         <!-- Scheduling -->
         <dependency>
@@ -277,12 +238,6 @@
             <version>2.3.3</version>
             <scope>provided</scope>
         </dependency>
-		<!-- LDAP SDK -->
-		<dependency>
-			<groupId>ldapsdk</groupId>
-			<artifactId>ldapsdk</artifactId>
-			<version>4.1</version>
-		</dependency>
         <!-- PDF변환용 라이브러리 -->
         <dependency>
             <groupId>com.artofsolving</groupId>
@@ -313,18 +268,6 @@
             </exclusions>
         </dependency>
 
-        <!-- Twitter -->
-        <dependency>
-            <groupId>org.twitter4j</groupId>
-            <artifactId>twitter4j-core</artifactId>
-            <version>4.0.7</version>
-        </dependency>
-		<!-- Twitter v2 -->
-		<dependency>
-		    <groupId>io.github.takke</groupId>
-		    <artifactId>jp.takke.twitter4j-v2</artifactId>
-		    <version>1.4.2</version>
-		</dependency>
 
         <!-- Ajax -->
         <dependency>
@@ -347,30 +290,7 @@
 			<version>1.17</version>
         </dependency>
         
-        <!-- oauth2 login -->
-	    <dependency>
-              <groupId>com.github.scribejava</groupId>
-              <artifactId>scribejava-apis</artifactId>
-              <version>8.3.3</version>
-        </dependency>
-        <dependency>
-              <groupId>com.github.scribejava</groupId>
-              <artifactId>scribejava-core</artifactId>
-              <version>8.3.3</version>
-        </dependency>
         
-        <!-- WebSocket Messenger -->
-        <dependency>
-            <groupId>javax.websocket</groupId>
-            <artifactId>javax.websocket-api</artifactId>
-            <version>1.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.json</artifactId>
-            <version>1.1.4</version>
-        </dependency>
         
         <!-- ajax json -->
         <!-- social에서 참조 하고 있어 임시 주석 처리 -->
@@ -390,34 +310,6 @@
 			<version>2.17.1</version>
         </dependency>
 
-        <!-- LDAP조직도관리 관련 라이브러리  -->
-        <dependency>
-            <groupId>org.springframework.ldap</groupId>
-            <artifactId>spring-ldap-core</artifactId>
-            <version>2.4.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-beans</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-tx</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>jcl-over-slf4j</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
@@ -484,28 +376,11 @@
 		</dependency>
 
         <!-- 3rd party 라이브러리로 별도의 설치 필요 -->
-
-        <!-- GPKI인증서 로그인처리 라이브러리 - 삭제됨 -->
-        <!--
-        <dependency>
-            <groupId>project</groupId>
-            <artifactId>gpkisecureweb</artifactId>
-            <version>1.0.4.9</version>
-        </dependency>        
-        <dependency>
-            <groupId>project</groupId>
-            <artifactId>libgpkiapi</artifactId>
-            <version>1.4.0</version>
-        </dependency>
-        -->
-
-		
 		<dependency>
 		    <groupId>javax.faces</groupId>
 		    <artifactId>javax.faces-api</artifactId>
 		    <version>2.3</version>
 		</dependency>
-
     </dependencies>
 
     <build>
@@ -577,21 +452,6 @@
                     </includes>
                 </configuration>
             </plugin>
-            <!-- docker server 배포 
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <url>http://192.168.100.251:8086/manager/text</url>
-                    <username>tomcat</username>
-                    <password>tomcat</password>
-                    <path>/</path>
-                    <warFile>target\egovframework-all-in-one.war</warFile>
-                    <update>true</update>
-                </configuration>
-            </plugin>
-            -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>emma-maven-plugin</artifactId>
